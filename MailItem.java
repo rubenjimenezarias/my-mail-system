@@ -16,36 +16,36 @@ public class MailItem
     public MailItem(String newFrom, String newTo, String newMessage)
     {
         // initialise instance variables
-        String from = newFrom;
-        String to = newTo;
-        String message = newMessage;
+        from = newFrom;
+        to = newTo;
+        message = newMessage;
     }
 
     /**
      * Primer metodo getter
      */
-    public void get1()
+    public String getFrom()
     {
         // put your code here
-        
+        return from;
     }
       
     /**
     * Primer metodo getter
     */
-    public void get2()
+    public String getTo()
     {
         // put your code here
-        
+        return to;
     }  
     
     /**
     * Primer metodo getter
     */
-    public void get3()
+    public String getMessage()
     {
         // put your code here
-        
+        return message;
     }
     /**
     * Metodo print que devuelve los valores de from to y message
