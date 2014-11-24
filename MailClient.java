@@ -32,7 +32,7 @@ public class MailClient
     /**
      *Metodo que imprime el mensaje del correo
      */
-    public void printItem()
+    public void printNextMailItem()
     {
         MailItem item = server.getNextMailItem(user);
         if (item == null) {
