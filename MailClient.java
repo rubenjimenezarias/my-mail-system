@@ -50,6 +50,14 @@ public class MailClient
         MailItem emailToSend = new MailItem(user, to, subject, message);
         server.post(emailToSend);
     }
+    
+    /**
+     * Metodo para saber cuantos correos tenemos para nosotros
+     */
+    public int howManyMailItems()
+    {
+        return server.howManyMailItems(user);
+    }
 }
 
         
