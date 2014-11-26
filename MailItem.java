@@ -50,6 +50,14 @@ public class MailItem
         // put your code here
         return message;
     }
+    /**
+    * Primer metodo getter
+    */
+    public String getSubject()
+    {
+        // put your code here
+        return subject;
+    }
     
     /**
     * Metodo print que devuelve los valores de from to y message

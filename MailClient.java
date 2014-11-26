@@ -58,6 +58,18 @@ public class MailClient
     {
         return server.howManyMailItems(user);
     }
+    
+     /**
+     * Metodo para contestar automaticamente al emisor del mensaje.
+     */
+    public void getNextMailItemAndAutorespond()
+    {
+        MailItem email = server.getNextMailItem(user);
+        String subject = "RE " + email.getSubject();
+        String message = "Estoy de vacaciones";
+        String from = email.getFrom();
+        sendMailItem(from,subject, message);
+    }
 }
 
         
