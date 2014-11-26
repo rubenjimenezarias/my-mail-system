@@ -14,11 +14,11 @@ public class MailClient
     /**
      * Constructor for objects of class MailClient
      */
-    public MailClient(MailServer newServer, String newUser)
+    public MailClient(MailServer server, String user)
     {
         // initialise instance variables
-        server = newServer;
-        user = newUser;
+        this.server = server;
+        this.user = user;
     }
 
     /**
@@ -34,12 +34,12 @@ public class MailClient
      */
     public void printNextMailItem()
     {
-        MailItem item = server.getNextMailItem(user);
-        if (item == null) {
+        MailItem email = server.getNextMailItem(user);
+        if (email == null) {
             System.out.println("No hay mensajes.");
         }
         else {
-            item.print();
+            email.print();
         }
     }
    
@@ -47,8 +47,8 @@ public class MailClient
      *Metodo sendMailItem envia mensaje.
      */
     public void sendMailItem(String newTo, String newMessage){
-        MailItem item = new MailItem(user, newTo, newMessage);
-        server.post(item);
+        MailItem emailToSend = new MailItem(user, newTo, newMessage);
+        server.post(emailToSend);
     }
 }
 
