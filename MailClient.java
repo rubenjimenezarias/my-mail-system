@@ -46,8 +46,8 @@ public class MailClient
    /**
      *Metodo sendMailItem envia mensaje.
      */
-    public void sendMailItem(String newTo, String newSubject, String newMessage){
-        MailItem emailToSend = new MailItem(user, newTo, newSubject, newMessage);
+    public void sendMailItem(String to, String subject, String message){
+        MailItem emailToSend = new MailItem(user, to, subject, message);
         server.post(emailToSend);
     }
 }
