@@ -67,8 +67,8 @@ public class MailClient
     {
         MailItem email = server.getNextMailItem(user);
         String subject = "RE " + email.getSubject();
-        String nuevalinea = System.getProperty("line.separator");
-        String message = "Estoy de vacaciones" + nuevalinea + nuevalinea + email.getMessage();
+        // OTRA FORMA DE PONER SALTOS DE LINEA String nuevalinea = System.getProperty("line.separator");
+        String message = "Estoy de vacaciones \n" + email.getMessage();
         String from = email.getFrom();
         sendMailItem(from,subject, message);
     }
