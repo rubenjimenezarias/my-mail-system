@@ -40,6 +40,7 @@ public class MailClient
         }
         else {
             email.print();
+            
         }
     }
    
@@ -66,7 +67,8 @@ public class MailClient
     {
         MailItem email = server.getNextMailItem(user);
         String subject = "RE " + email.getSubject();
-        String message = "Estoy de vacaciones";
+        String nuevalinea = System.getProperty("line.separator");
+        String message = "Estoy de vacaciones" + nuevalinea + nuevalinea + email.getMessage();
         String from = email.getFrom();
         sendMailItem(from,subject, message);
     }
