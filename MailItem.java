@@ -9,16 +9,19 @@ public class MailItem
 {
     // almacena desde quien, para quien y el contenido del mensaje.
     private String from, to, message;
+    private String subject;
 
     /**
      * Constructor for objects of class MailItem
      */
-    public MailItem(String from, String to, String message)
+    public MailItem(String from, String to, String subject, String message)
     {
         // initialise instance variables
         this.from = from;
         this.to = to;
         this.message = message;
+        // asunto del mensaje
+        this.subject = subject;
     }
 
     /**
@@ -55,6 +58,7 @@ public class MailItem
     {
          System.out.println("De: " + from);
          System.out.println("A: " + to);
+         System.out.println("Este es el asunto del mensaje: " + subject);
          System.out.println("Este es el mensaje: " + message);
     }
     
