@@ -55,9 +55,9 @@ public class MailClient
     /**
      * Metodo para saber cuantos correos tenemos para nosotros
      */
-    public int howManyMailItems()
+    public void howManyMailItems()
     {
-        return server.howManyMailItems(user);
+        System.out.println("Tienes " + server.howManyMailItems(user) + " correos pendientes.");
     }
     
      /**
