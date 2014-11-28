@@ -11,6 +11,9 @@ public class MailClient
     private MailServer server;
     private String user;
     private String lastEmail;
+    private int countSend;
+    private int countSpam;
+    private int countRecive;
 
     /**
      * Constructor for objects of class MailClient
@@ -55,12 +58,19 @@ public class MailClient
         String message = email.getMessage();
         String spam1 = "viagra";
         String spam2 = "oferta";
+        String spam3 = "proyecto";
         Boolean found1;
         Boolean found2;
+        Boolean found3;
         found1 = message.contains(spam1);
         found2 = message.contains(spam2);
+        found3 = message.contains(spam3);
         if (email == null) {
             System.out.println("No hay mensajes.");
+        }
+        else if (found3 == true){
+            email.print();
+            lastEmail = email.getMessage();
         }
         else if (found1 == true || found2 == true){
             System.out.println("Tu mensaje contenia un spam");
