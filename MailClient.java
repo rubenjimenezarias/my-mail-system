@@ -71,13 +71,17 @@ public class MailClient
         else if (found3 == true){
             email.print();
             lastEmail = email.getMessage();
+            int countRecive = +1;
         }
         else if (found1 == true || found2 == true){
             System.out.println("Tu mensaje contenia un spam");
+            int countRecive = +1;
+            int countSpam = +1;
         }
         else {
             email.print();
             lastEmail = email.getMessage();
+            int countRecive = +1;
         }
     }
    
@@ -87,6 +91,7 @@ public class MailClient
     public void sendMailItem(String to, String subject, String message){
         MailItem emailToSend = new MailItem(user, to, subject, message);
         server.post(emailToSend);
+        int countSend = +1;
     }
     
     /**
@@ -127,6 +132,16 @@ public class MailClient
         {
              System.out.println("No tienes ningun mensaje");
         }
+    }
+    /**
+     * Metodo para ver estadisticas
+     */
+    public void sawStadistics()
+    {
+        System.out.println("Emails recividos: " + countRecive);
+        System.out.println("Emails enviados: " + countSend);
+        long spamPor = countRecive / countSpam * 100;
+        System.out.println("Emails recividos con spam: " + countRecive + "%");
     }
 }
 
