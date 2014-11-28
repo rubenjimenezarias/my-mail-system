@@ -27,7 +27,9 @@ public class MailClient
      */
     public MailItem getNextMailItem()
     {
-        return server.getNextMailItem(user);
+        MailItem email = server.getNextMailItem(user);
+        lastEmail = email.getMessage();
+        return email;
     }
     
     /**
@@ -36,8 +38,14 @@ public class MailClient
     public void printNextMailItem()
     {
         MailItem email = server.getNextMailItem(user);
-
-        if (email == null) {
+        String message = email.getMessage();
+        String spam1 = "viagra";
+        String spam2 = "oferta";
+        Boolean found1;
+        Boolean found2;
+        found1 = message.contains(spam1);
+        found2 = message.contains(spam2);
+        if (email == null || found1 == true || found2 == true) {
             System.out.println("No hay mensajes.");
         }
         else {
@@ -68,6 +76,7 @@ public class MailClient
     public void getNextMailItemAndAutorespond()
     {
         MailItem email = server.getNextMailItem(user);
+  
         if (email != null)
         {
             String subject = "RE " + email.getSubject();
