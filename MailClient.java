@@ -28,7 +28,21 @@ public class MailClient
     public MailItem getNextMailItem()
     {
         MailItem email = server.getNextMailItem(user);
-        lastEmail = email.getMessage();
+        String message = email.getMessage();
+        String spam1 = "viagra";
+        String spam2 = "oferta";
+        Boolean found1;
+        Boolean found2;
+        found1 = message.contains(spam1);
+        found2 = message.contains(spam2);
+        if (found1 == true || found2 == true)
+        {
+            email = null;
+        }
+        else
+        {
+            lastEmail = email.getMessage();
+        }
         return email;
     }
     
@@ -45,8 +59,11 @@ public class MailClient
         Boolean found2;
         found1 = message.contains(spam1);
         found2 = message.contains(spam2);
-        if (email == null || found1 == true || found2 == true) {
+        if (email == null) {
             System.out.println("No hay mensajes.");
+        }
+        else if (found1 == true || found2 == true){
+            System.out.println("Tu mensaje contenia un spam");
         }
         else {
             email.print();
