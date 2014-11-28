@@ -10,6 +10,7 @@ public class MailClient
     // instance variables - replace the example below with your own
     private MailServer server;
     private String user;
+    private String lastEmail;
 
     /**
      * Constructor for objects of class MailClient
@@ -35,12 +36,13 @@ public class MailClient
     public void printNextMailItem()
     {
         MailItem email = server.getNextMailItem(user);
+
         if (email == null) {
             System.out.println("No hay mensajes.");
         }
         else {
             email.print();
-            
+            lastEmail = email.getMessage();
         }
     }
    
@@ -66,11 +68,29 @@ public class MailClient
     public void getNextMailItemAndAutorespond()
     {
         MailItem email = server.getNextMailItem(user);
-        String subject = "RE " + email.getSubject();
-        // OTRA FORMA DE PONER SALTOS DE LINEA String nuevalinea = System.getProperty("line.separator");
-        String message = "Estoy de vacaciones \n" + email.getMessage();
-        String from = email.getFrom();
-        sendMailItem(from,subject, message);
+        if (email != null)
+        {
+            String subject = "RE " + email.getSubject();
+            // OTRA FORMA DE PONER SALTOS DE LINEA String nuevalinea = System.getProperty("line.separator");
+            String message = "Estoy de vacaciones.\n" + email.getMessage();
+            String from = email.getFrom();
+            sendMailItem(from,subject, message);
+        }
+    }
+    
+     /**
+     * Metodo para ver el ulitmo metodo recivido.
+     */
+    public void printLastEmail()
+    {
+        if (lastEmail != null)
+        {
+            System.out.println("El ultimo mensaje recivido es:" + lastEmail);
+        }
+        else
+        {
+             System.out.println("No tienes ningun mensaje");
+        }
     }
 }
 
